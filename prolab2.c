@@ -18,46 +18,8 @@ typedef struct suffix_tree_node Node;
  */
 
 void suffixtreecontrol();
-void suffixtreecontrol()
-{
-    char str[12];
-    int str_lentgh = 0;
-    int str_yari_uzunluk = 0;
-    int sonuc = 1;
-    char str_orta[10];
-    char str_1[10];
-    char str_2[10];
-    FILE *dosyaSTR;
-    dosyaSTR = fopen("dosyastring.text", "r");
-    fscanf(dosyaSTR, "%s", &str);
-    str_lentgh = strlen(str);
-    str_yari_uzunluk = str_lentgh / 2;
-    rewind(dosyaSTR);
-//bu satir sonrasıdan konrol kelime yarısı için yapılır.
-//her sonek için for döngüsü konulup "i" ile farklı uzunluktaki içinde kontrol yapılması gerekir.
-    fgets(str_1, str_yari_uzunluk + 1, dosyaSTR);
 
-    if ((str_lentgh % 2) == 1)
-    {
-        fgets(str_orta, 2, dosyaSTR);
-
-    }
-    fgets(str_2, str_yari_uzunluk + 1, dosyaSTR);
-
-    sonuc = strcmp(str_1, strrev(str_2));
-
-    if (sonuc == 0)
-    {
-        printf("%s\n %s katari icin sonek agaci olusturulamaz!\n\n","\x1B[31m", str);
-    }
-
-    else
-    {
-        printf("%s\n %s katari icin sonek agaci olusturulabilir!\n\n","\x1B[34m", str);
-    }
-
-    fclose(dosyaSTR);
-}
+void reverse_string(char *str);
 
 int main()
 {
@@ -65,7 +27,6 @@ int main()
 
     while (1)
     {
-
         printf("%s\n\t* * * * * * * * * MENU * * * * * * * * *\n\n","\x1B[0m");
         printf("\tKatari icin sonek agaci olusturabilir mi ? \n\t\t\tGormek icin 1\'e basiniz ...\n\n");
         printf("\tKatari icinde p katari geciyor mu ?; \n\t Geciyorsa gectigi ilk pozisyon yeri\n\t Ve kac kez tekrar ettigini  \n\t\t\t gormek icin 2\'ye basiniz...\n\n");
@@ -101,4 +62,68 @@ int main()
     }
 
     return 0;
+}
+
+
+void suffixtreecontrol()
+{
+    char str[40];
+    int str_lentgh = 0;
+    int str_yari_uzunluk = 0;
+    int sonuc = 1;
+    char str_orta[10];
+    char str_1[10];
+    char str_2[10];
+    
+    FILE *dosyaSTR = fopen("string.txt", "r"); //Kullanıcıdan alınmalı
+    fscanf(dosyaSTR, "%s", str);
+    str_lentgh = strlen(str);
+
+
+    str_yari_uzunluk = str_lentgh / 2;
+    rewind(dosyaSTR);
+//bu satir sonrasıdan konrol kelime yarısı için yapılır.
+//her sonek için for döngüsü konulup "i" ile farklı uzunluktaki içinde kontrol yapılması gerekir.
+    fgets(str_1, str_yari_uzunluk + 1, dosyaSTR);
+
+    if ((str_lentgh % 2) == 1)
+    {
+        fgets(str_orta, 2, dosyaSTR);
+
+    }
+
+    fgets(str_2, str_yari_uzunluk + 1, dosyaSTR);
+
+    sonuc = strcmp(str_1, str_2);
+
+    if (sonuc == 0)
+    {
+        printf("%s\n %s katari icin sonek agaci olusturulamaz!\n\n","\x1B[31m", str);
+    }
+
+    else
+    {
+        printf("%s\n katari icin sonek agaci olusturulabilir!\n\n","\x1B[34m", str);
+    }
+
+    fclose(dosyaSTR);
+}
+
+
+
+void reverse_string(char *str)
+{
+    char swap;
+    int size = 0;
+    for(;*(str+size) != '\0';size++);
+
+    size -= 1;
+
+    for(int i=0;i<=size/2;i++)
+    {
+        swap = *(str+i);
+        *(str+i) = *(str+size-i);
+        *(str+size-i) = swap;
+    }
+    
 }
