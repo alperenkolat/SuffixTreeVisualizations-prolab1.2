@@ -71,29 +71,29 @@ void suffixtreecontrol()
     int sonuc = 0;
 
     FILE *dosyaSTR;
-    if ((dosyaSTR = fopen("string.text", "r")) == NULL)
+    if ((dosyaSTR = fopen("string.txt", "r")) == NULL)
     {
         printf("dosya acma hatasi!\n");
         exit(1);
     }
 
     //Kullanıcıdan alınmalı
-    fscanf(dosyaSTR, "%s", str);
+    fscanf(dosyaSTR, "%s", str);  
     str_lentgh = strlen(str);
 
-    for (int i = 0; i < str_lentgh; i++)
+    for (int i = 0; i <1; i++)
     {
-        for (int j = 0; j < str_lentgh; j++)
-
-            if (str[i] == str[j]&&i!=j)
+        if (str[i]==str[str_lentgh+i-2])
+        {
+            if (str[i+1]==str[str_lentgh+i-1])
             {
-
-                if (str[i + 1] == str[j + 1])
-                {
-                    sonuc = 1;
-                }
+                sonuc=1;
             }
+            
+        }
+        
     }
+    
     if (sonuc == 1)
     {
         printf("%s\n %s katari icin sonek agaci olusturulamaz!\n\n", "\x1B[31m", str);
@@ -101,9 +101,7 @@ void suffixtreecontrol()
     if (sonuc == 0)
     {
 
-        printf("%s\n katari icin sonek agaci olusturulabilir!\n\n", "\x1B[34m", str);
+        printf("%s\n %s katari icin sonek agaci olusturulabilir!\n\n", "\x1B[34m", str);
     }
     fclose(dosyaSTR);
-
-    
 }
