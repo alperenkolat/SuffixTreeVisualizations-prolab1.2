@@ -31,7 +31,7 @@ int regulation_tree(branch *p_branch,char *suffix,int index, int scrool);
 int main()
 {
     branch  *root = malloc(sizeof(branch));
-    char array[15] = "xabxac";
+    char array[15] = "AGTTTATAC";
     for(int i =0;i<strlen(array);i++)// Kelime parçalanarak ekleyici fonksiyona gönderiliyor
     {
         find_branch((array+i),root);
@@ -147,10 +147,28 @@ int regulation_tree(branch *p_branch,char *suffix,int index, int scrool) // Düz
             if(new != 0)
             {
                 regulation_tree(p_branch->next[index],new_suffix,i,new);
-                continue;
+                return 1;
             }
         }
     }
+
+    int flag2=0;
+    if(strlen(p_branch->next[index]->suffix) == scrool)
+    {
+        for(int i=0;i<5;i++)
+        {
+            if(p_branch->next[index]->next[i] == NULL) // Köke yeni dalı ekliyoruz
+            {
+                p_branch->next[index]->next[i] = malloc(sizeof(branch));
+                strcpy(p_branch->next[index]->next[i]->suffix,new_suffix);
+                flag2 =1;
+                return 1;
+            }
+
+        }
+    }
+
+
 
     branch *new_branch = malloc(sizeof(branch));// Araya girecek düğüm
     branch *new_branch2 = malloc(sizeof(branch));//Dallanacak düğüm
