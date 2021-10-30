@@ -22,11 +22,21 @@ void suffixtreecontrol();
 
 void add_branch(char *suffix,branch *branch);
 
+void string_scroll(char *str,int scr_value);
+
+int compare_suffix(char *suffix, branch *p_branch);
+
+int regulation_tree(branch *p_branch,char *suffix,int index, int scrool);
+
 int main()
 {
-    branch *root = malloc(sizeof(branch));
-    char array[10] = "xabxac";
-    find_branch(array,root);
+    branch  *root = malloc(sizeof(branch));
+    char array[15] = "agtttatacct";
+    for(int i =0;i<strlen(array);i++)// Kelime parçalanarak ekleyici fonksiyona gönderiliyor
+    {
+        find_branch((array+i),root);
+    }
+    
 
     return 0;
 }
@@ -75,46 +85,81 @@ void suffixtreecontrol()
     return 0;
 }
 
-void find_branch(char *suffix,branch *branch)
+void find_branch(char *suffix,branch *p_branch)
 {
     int str_index = 0;
     int flag=0;
     for(int i=0;i<5;i++)
     {
-        if(branch->next[i] != NULL)
+        if(p_branch->next[i] != NULL) // Kökte ekli olanlar ile benzerlik aranıyor
         {
-            str_index = compare_suffix(suffix,branch->next[i]);
+            str_index = compare_suffix(suffix,p_branch->next[i]);// Metinler kıyaslanıyor ve ilk kaç hanesinin benzer olduğu saptanıyor
 
             if(str_index != 0)
             {
-                flag = regulation_tree(branch->next[i],suffix);
+                flag = regulation_tree(p_branch,suffix,i,str_index);//Benzer hane varsa düzenleme fonksiyonu başlatılıyor
                 
             }
         }
 
     }
-
-    if(flag == 0)
+    
+    if(flag == 0) // 0 İse düzenleme fonksiyonu çalışmamış demektir str index almadık çünkü o hepsini kontrol ediyor ve en sonda 0 döndürebilir
     {
-        regulation_tree(branch,suffix);
+        for(int i=0;i<5;i++)
+        {
+            if(p_branch->next[i] == NULL) // Köke yeni dalı ekliyoruz
+            {
+                p_branch->next[i] = malloc(sizeof(branch));
+                strcpy(p_branch->next[i]->suffix,suffix);
+                break;
+            }
+
+        }
     }
+    
 }
 
-int compare_suffix(char *suffix, branch *branch)
+int compare_suffix(char *suffix, branch *p_branch) //Yakınlık kıyaslayıcı ancak şu an daha genellenemdi her senaryoda çalışamaz
 {
     for(int i=0;*(suffix+i) != '\0';i++)
     {
-        if( *(suffix+i) != branch->suffix[i])
+        if( *(suffix+i) != p_branch->suffix[i])
         {
             return i;
         }
     }
 }
 
-int regulation_tree(branch *branch,char *suffix)
+int regulation_tree(branch *p_branch,char *suffix,int index, int scrool) // Düzenleme Fonksiyonu
 {
-    strcpy(branch->suffix,suffix);
+    branch *new_branch = malloc(sizeof(branch));// Araya girecek düğüm
+    branch *new_branch2 = malloc(sizeof(branch));//Dallanacak düğüm
+
+    for(int i=0; i<scrool; i++) new_branch->suffix[i] = *(suffix+i); // Araya girecek düğümün suffix texti oluşturuluyor
+
+    new_branch->next[0] = p_branch->next[index]; // Eski düğüm araya girecek düğüm tarafından işaret ettiriliyor
+    new_branch->next[1] = new_branch2; // Dallanacak yeni düğüm araya girecek düğüm tarafından işaret ettiriliyor
+
+
+    string_scroll(p_branch->next[index]->suffix,scrool); // Eski düğümün texti düzenleniyor kesişime kadar olan bölge atılıyor
+
+    strcpy(new_branch2->suffix,suffix);// Yeni dalın isminin HEPSİ yazılıyor
+    string_scroll(new_branch2->suffix,scrool); // Araya girecek düğümün sahip olduğu kısımlar textten kaydırılıyor 2 satır yukarıdaki gibi
+
+    p_branch->next[index] = new_branch; // Kökteki adres araya giren düğüme işaret ettiriliyor böylece araya girme işlemi tamamlanmış oluyor
+
 }
+
+void string_scroll(char *str,int scr_value)// Texti düzenleyen fonksiyon
+{
+    int str_len = strlen(str);
+    for(int i=0;i<str_len;i++)
+    {
+        *(str+i) = *(str+scr_value+i);
+    }
+}
+
 
 int home_screen()
 {
