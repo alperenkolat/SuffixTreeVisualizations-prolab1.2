@@ -20,6 +20,8 @@ https://hwv.dk/st.html
 
 https://brenden.github.io/ukkonen-animation/
 
+https://wiki.gnome.org/action/show/Projects/GooCanvas?action=show&redirect=GooCanvas
+
 
 
 
