@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define size 15
 typedef struct branch
 {
     char suffix[100];
-    struct branch *next[5];
+    struct branch *next[size];
 }branch;
 
 typedef struct
@@ -31,7 +32,7 @@ int regulation_tree(branch *p_branch,char *suffix,int index, int scrool);
 int main()
 {
     branch  *root = malloc(sizeof(branch));
-    char array[15] = "AGTTTATAC";
+    char array[30] = "attaaaggtttataccttcccaggtaaca$";
     for(int i =0;i<strlen(array);i++)// Kelime parçalanarak ekleyici fonksiyona gönderiliyor
     {
         find_branch((array+i),root);
@@ -89,7 +90,7 @@ void find_branch(char *suffix,branch *p_branch)
 {
     int str_index = 0;
     int flag=0;
-    for(int i=0;i<5;i++)
+    for(int i=0;i<size;i++)
     {
         if(p_branch->next[i] != NULL) // Kökte ekli olanlar ile benzerlik aranıyor
         {
@@ -106,7 +107,7 @@ void find_branch(char *suffix,branch *p_branch)
     
     if(flag == 0) // 0 İse düzenleme fonksiyonu çalışmamış demektir str index almadık çünkü o hepsini kontrol ediyor ve en sonda 0 döndürebilir
     {
-        for(int i=0;i<5;i++)
+        for(int i=0;i<size;i++)
         {
             if(p_branch->next[i] == NULL) // Köke yeni dalı ekliyoruz
             {
@@ -139,7 +140,7 @@ int regulation_tree(branch *p_branch,char *suffix,int index, int scrool) // Düz
 
     int new = 0;
 
-    for(int i=0;i<5;i++)
+    for(int i=0;i<size;i++)
     {
         if(p_branch->next[index]->next[i] != NULL)
         {
@@ -155,7 +156,7 @@ int regulation_tree(branch *p_branch,char *suffix,int index, int scrool) // Düz
     int flag2=0;
     if(strlen(p_branch->next[index]->suffix) == scrool)
     {
-        for(int i=0;i<5;i++)
+        for(int i=0;i<size;i++)
         {
             if(p_branch->next[index]->next[i] == NULL) // Köke yeni dalı ekliyoruz
             {
