@@ -8,6 +8,8 @@ https://www.reddit.com/r/C_Programming/comments/qgodbb/6502_emulator_in_c_using_
 
 https://www.reddit.com/r/C_Programming/comments/67ed4a/what_do_the_different_c_graphics_libraries_offer/
 
+https://stackoverflow.com/questions/31615012/are-there-good-tutorials-for-sdl2-0-for-c-programming-not-c/31615389
+
 ### Sars-Cov-2 Genom
 https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
 
