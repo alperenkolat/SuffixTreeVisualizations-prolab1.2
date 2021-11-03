@@ -18,10 +18,10 @@ typedef struct
 
 
 
-void suffixtreecontrol();
+int suffixtreecontrol();
 
 
-void add_branch(char *suffix,branch *branch);
+void find_branch(char *suffix,branch *branch);
 
 void string_scroll(char *str,int scr_value);
 
@@ -32,7 +32,7 @@ int regulation_tree(branch *p_branch,char *suffix,int index, int scrool);
 int main()
 {
     branch  *root = malloc(sizeof(branch));
-    char array[30] = "attaaaggtttataccttcccaggtaaca$";
+    char array[30] = "attaaagg$";
     for(int i =0;i<strlen(array);i++)// Kelime parçalanarak ekleyici fonksiyona gönderiliyor
     {
         find_branch((array+i),root);
@@ -42,7 +42,7 @@ int main()
     return 0;
 }
 
-void suffixtreecontrol()
+int suffixtreecontrol()
 {
     char str[40];
     int str_lentgh = 0;
@@ -144,7 +144,7 @@ int regulation_tree(branch *p_branch,char *suffix,int index, int scrool) // Düz
     {
         if(p_branch->next[index]->next[i] != NULL)
         {
-            new = compare_suffix(new_suffix,p_branch->next[index]->next[i]->suffix);
+            new = compare_suffix(new_suffix,p_branch->next[index]->next[i]);
             if(new != 0)
             {
                 regulation_tree(p_branch->next[index],new_suffix,i,new);
