@@ -16,6 +16,11 @@ https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
 ### Grafik Kütüphaneleri
 https://www.cairographics.org/
 
+https://acry.github.io/SDL2-C.html
+
+https://stephenmeier.net/2014/09/04/sdl-2-0-tutorial-03-metasprites/
+
+https://acry.github.io/SDL2-C.html
 ### Faydalı Şeyler
 
 https://hwv.dk/st.html
