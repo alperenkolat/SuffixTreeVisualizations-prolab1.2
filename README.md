@@ -10,6 +10,7 @@ https://www.reddit.com/r/C_Programming/comments/67ed4a/what_do_the_different_c_g
 
 https://stackoverflow.com/questions/31615012/are-there-good-tutorials-for-sdl2-0-for-c-programming-not-c/31615389
 
+https://www.quora.com/How-can-I-use-graphics-h-in-a-GCC-compiler
 
 
 ### Sars-Cov-2 Genom
