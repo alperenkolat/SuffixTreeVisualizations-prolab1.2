@@ -14,6 +14,8 @@ https://www.quora.com/How-can-I-use-graphics-h-in-a-GCC-compiler
 
 https://stackoverflow.com/questions/10126695/how-to-draw-a-tree-representing-a-graph-of-connected-nodes
 
+https://stackoverflow.com/questions/38334081/howto-draw-circles-arcs-and-vector-graphics-in-sdl
+
 ### Sars-Cov-2 Genom
 https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
 
