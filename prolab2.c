@@ -27,23 +27,15 @@ void find_branch(char *suffix, branch *branch);
 
 void string_scroll(char *str, int scr_value);
 
-<<<<<<< HEAD
 int compare_suffix(char *suffix, branch *p_branch);
-=======
-int suffixtreecontrol();
->>>>>>> 9294409d72359968c2959b96fae04e34dd2eb659
 
 int regulation_tree(branch *p_branch, char *suffix, int index, int scrool);
 
-<<<<<<< HEAD
 int main()
 {
     branch *root = malloc(sizeof(branch));
     char array[18000] = "attaaaggtttataccttcccaggtaacaaaccaaccaactttcgatctcttgtagatctgttctctaaacgaactttaaaatctgtgtggctgtcactcggctgcatgcttagtgcactcacgcagtataattaataactaattactgtcgttgacaggacacgagtaactcgtctatc$";
     for (int i = 0; i < strlen(array); i++) // Kelime parçalanarak ekleyici fonksiyona gönderiliyor
-=======
-void find_branch(char *suffix,branch *branch);
->>>>>>> 9294409d72359968c2959b96fae04e34dd2eb659
 
     {
         find_branch((array + i), root);
@@ -65,7 +57,6 @@ int indis = 0;
 
 void caller(branch *p_branch_as)
 {
-<<<<<<< HEAD
 
     int en_cok_dal_index = 0;
     int en_cok_dal = 0;
@@ -91,11 +82,6 @@ void caller(branch *p_branch_as)
         printf("tekrarlanan katar yok");
     }
     else
-=======
-    branch  *root = malloc(sizeof(branch));
-    char array[30] = "attaaagg$";
-    for(int i =0;i<strlen(array);i++)// Kelime parçalanarak ekleyici fonksiyona gönderiliyor
->>>>>>> 9294409d72359968c2959b96fae04e34dd2eb659
     {
         printf("\n%s katari en çok tekrar eden katar %d kez tekrar ediyor\n", p_branch_as->next[en_cok_dal_index]->suffix, en_cok_dal);
     }
@@ -269,13 +255,8 @@ int regulation_tree(branch *p_branch, char *suffix, int index, int scrool) // D�
     {
         if (p_branch->next[index]->next[i] != NULL)
         {
-<<<<<<< HEAD
             new = compare_suffix(new_suffix, p_branch->next[index]->next[i]);
             if (new != 0)
-=======
-            new = compare_suffix(new_suffix,p_branch->next[index]->next[i]);
-            if(new != 0)
->>>>>>> 9294409d72359968c2959b96fae04e34dd2eb659
             {
                 regulation_tree(p_branch->next[index], new_suffix, i, new);
                 return 1;
