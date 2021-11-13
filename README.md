@@ -4,6 +4,8 @@
 ### Tartışma Başlıkları
 https://stackoverflow.com/questions/1701728/graphics-library-in-c
 
+https://stackoverflow.com/questions/10355103/finding-the-longest-repeated-substring
+
 https://www.reddit.com/r/C_Programming/comments/qgodbb/6502_emulator_in_c_using_win32_cocoaquartz2d_and/
 
 https://www.reddit.com/r/C_Programming/comments/67ed4a/what_do_the_different_c_graphics_libraries_offer/
