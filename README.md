@@ -31,6 +31,7 @@ https://stephenmeier.net/2014/09/04/sdl-2-0-tutorial-03-metasprites/
 
 https://acry.github.io/SDL2-C.html
 ### Faydalı Şeyler
+https://visualgo.net/en/suffixtree?slide=1
 
 https://hwv.dk/st.html
 
