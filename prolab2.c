@@ -53,7 +53,7 @@ void deneme2(branch *p_branch,double current_x,double current_y,int r,int i2,ALL
 int main()
 {
     branch *root = malloc(sizeof(branch));
-    char array[30] = "MISSISSIPPI$";
+    char array[30] = "attaaaggtttataccttcc$";
     tree_control(array);
     for (int i = 0; i < strlen(array); i++) // Kelime parçalanarak ekleyici fonksiyona gönderiliyor
     {
@@ -611,7 +611,7 @@ void deneme1(branch *p_branch,double current_x,double current_y,int r, ALLEGRO_F
             else color = 0;
         }
 
-        al_draw_line(current_x + -1*(cos((val)*(i+30))*r), current_y + (sin((val)*(i+30))*r), current_x + -1*(cos((val)*(i+30))*distance), current_y + (sin((val)*(i+30))*distance) , al_map_rgb_f(1, 0, 0), 1); // Çizgi çizer
+        al_draw_line(current_x + -1*(cos((val)*(i+30))*r), current_y + (sin((val)*(i+30))*r), current_x + -1*(cos((val)*(i+30))*distance), current_y + (sin((val)*(i+30))*distance) , al_map_rgb_f(1, color, 0), 1); // Çizgi çizer
         al_draw_circle(current_x + -1*(cos((val)*(i+30))*distance) + -1*(cos((val)*(i+30))*r) , current_y + (sin((val)*(i+30))*distance) + (sin((val)*(i+30))*r), r, al_map_rgb_f(1, color, 1), 2);
         al_draw_text(font, al_map_rgb(255, 255, 255),current_x + -1*(cos((val)*(i+30))*distance) + -1*(cos((val)*(i+30))*r) -r +1 , current_y + (sin((val)*(i+30))*distance) + (sin((val)*(i+30))*r), 0, p_branch->next[branch_size]->suffix);// Son kısımları yazmayacak
 
@@ -644,7 +644,7 @@ void deneme2(branch *p_branch,double current_x,double current_y,int r,int i2,ALL
             else color = 0;
         }
 
-        al_draw_line(current_x + -1*(cos((val)*(i+30+i2))*r), current_y + (sin((val)*(i+30+i2))*r), current_x + -1*(cos((val)*(i+30+i2))*distance), current_y + (sin((val)*(i+30+i2))*distance) , al_map_rgb_f(1, 0, 0), 1); // Çizgi çizer
+        al_draw_line(current_x + -1*(cos((val)*(i+30+i2))*r), current_y + (sin((val)*(i+30+i2))*r), current_x + -1*(cos((val)*(i+30+i2))*distance), current_y + (sin((val)*(i+30+i2))*distance) , al_map_rgb_f(1, color, 0), 1); // Çizgi çizer
         al_draw_circle(current_x + -1*(cos((val)*(i+30+i2))*distance) + -1*(cos((val)*(i+30))*r) , current_y + (sin((val)*(i+30+i2))*distance) + (sin((val)*(i+30))*r), r, al_map_rgb_f(1, color, 1), 2);
         al_draw_text(font, al_map_rgb(255, 255, 255), current_x + -1*(cos((val)*(i+30+i2))*distance) + -1*(cos((val)*(i+30))*r) -r, current_y + (sin((val)*(i+30+i2))*distance) + (sin((val)*(i+30))*r), 0, p_branch->next[branch_size]->suffix);// Son kısımları yazmayacak
         deneme2(p_branch->next[branch_size],current_x + -1*(cos((val)*(i+30+i2))*distance) + -1*(cos((val)*(i+30))*r),current_y + (sin((val)*(i+30+i2))*distance) + (sin((val)*(i+30))*r),r,i2,font,distance,adress);
