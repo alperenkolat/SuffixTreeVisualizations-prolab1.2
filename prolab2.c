@@ -30,6 +30,7 @@ int compare_suffix(char *suffix, branch *p_branch);
 
 int regulation_tree(branch *p_branch, char *suffix, int index, int scrool);
 
+void home_screen(branch *root, branch *address[]);
 int main()
 {
     branch *root = malloc(sizeof(branch));
@@ -40,37 +41,7 @@ int main()
         find_branch((array + i), root);
     }
     branch *address[4];
-    int repaet_count = 0;
-
-    address[0] = node_counting_caller(root);
-
-    char longest[10];
-    char longest_copy[10];
-    char anlik_long[10];
-    longest_find(root, longest, anlik_long);
-    printf("-%s-\n", longest);//ek
-    strcpy(longest_copy,longest);
-
-
-    address[1] = substring_check(root, longest);
-    node_counting(address[1], &repaet_count);
-    printf("en uzun katar  %s tekrar sayisi %d \n", longest_copy, repaet_count);
-    repaet_count = 0;
-
-    char aranan[10];
-    char aranan_copy[10];
-    printf("aranan katari girin..\n");
-    scanf("%s", aranan);
-    strcpy(aranan_copy,aranan);
-    address[2] = substring_check(root, aranan);
-    if(address[2]!=NULL){
-    node_counting(address[2], &repaet_count);
-    printf("bulundu ..aranan katar  %s tekrar sayisi %d ..\n",aranan_copy, repaet_count);}
-    else{
-        printf("bulunamadi..\n");
-
-    }
-    repaet_count = 0;
+    home_screen(root, address);
 
     return 0;
 }
@@ -162,11 +133,11 @@ int longest_find(branch *p_branch, char *longest, char *anlik)
 
     for (int i = 0; i < size; i++)
     {
-        if (p_branch->next[i] != NULL)//dal yoksa bakılmaz
+        if (p_branch->next[i] != NULL) //dal yoksa bakılmaz
         {
-        strcpy(new_anlik, anlik);//islem yapma icin atıyoruz
+            strcpy(new_anlik, anlik); //islem yapma icin atıyoruz
             strcat(new_anlik, p_branch->next[i]->suffix);
-            if (p_branch->next[i]->next[0] == NULL)//dügüm yaprak ise tekrarlamıyor demektir
+            if (p_branch->next[i]->next[0] == NULL) //dügüm yaprak ise tekrarlamıyor demektir
             {
                 continue;
             }
@@ -178,7 +149,7 @@ int longest_find(branch *p_branch, char *longest, char *anlik)
             if (p_branch->next[i]->next[0] != NULL) //eger at dalı varsa altdayala gecilir
             {
 
-                strcpy(anlik, new_anlik);//altadala geçmeden önce bu dalın katarı altdalda kullanmılmak
+                strcpy(anlik, new_anlik); //altadala geçmeden önce bu dalın katarı altdalda kullanmılmak
                 return longest_find(p_branch->next[i], longest, anlik);
             }
         }
@@ -210,27 +181,28 @@ branch *substring_check(branch *p_branch, char *arr) //aranan katar ağaçta var
                     }
                 }
             }
-            if (arr[0] == p_branch->next[i]->suffix[0]) //kısmi eşlesme varsa
+            if (arr[0] == p_branch->next[i]->suffix[0]) //kismi eslesme varsa
             {
                 int a = 0;
 
-                while (arr[a] == p_branch->next[i]->suffix[a]) //benzer kısımları sayar
+                while (arr[a] == p_branch->next[i]->suffix[a]) //benzer kisimlari sayar
                 {
 
                     a++;
                 }
                 for (int j = 0; j < a; j++)
                 {
-                    for (int k = 0; k < strlen(arr); k++) //benzer kısımları atar
+                    for (int k = 0; k < strlen(arr); k++) //benzer kisimlari atar
                     {
                         arr[k] = arr[k + 1];
                     }
                 }
-               if(a==strlen(p_branch->next[i]->suffix))// dalda uyuşma var ise
+                if (a == strlen(p_branch->next[i]->suffix)) // dalda uyusma var ise
                 {
-                return substring_check(p_branch->next[i], arr); //alt dala geçer
+                    return substring_check(p_branch->next[i], arr); //alt dala geser
                 }
-                else{
+                else
+                {
                     return NULL;
                 }
             }
@@ -344,33 +316,56 @@ void string_scroll(char *str, int scr_value) // Texti düzenleyen fonksiyon
     }
 }
 
-int home_screen()
+void home_screen(branch *root, branch *address[])
 {
-
+    int repaet_count = 0;
     int secim;
-
+    char longest[10];
+    char longest_copy[10];
+    char anlik_long[10];
+    char aranan[10];
+    char aranan_copy[10];
     while (1)
     {
         printf("%s\n\t* * * * * * * * * MENU * * * * * * * * *\n\n", "\x1B[0m");
-        printf("\tKatari icin sonek agaci olusturabilir mi ? \n\t\t\tGormek icin 1\'e basiniz ...\n\n");
-        printf("\tKatari icinde p katari geciyor mu ?; \n\t Geciyorsa gectigi ilk pozisyon yeri\n\t Ve kac kez tekrar ettigini  \n\t\t\t gormek icin 2\'ye basiniz...\n\n");
-        printf("\tKatari icin  en uzun tekrar eden altkatari bulmak; \n\t Ve kac kez tekrar ettigini \n\t\t\tGormek icin 3\'e basiniz...\n\n");
-        printf("\tKatari icin en cok tekrar eden alt katari bulmak ;\n\t Ve kez tekrar ettigini \n\t\t\tGormek icin 4\'e basiniz..\n\n");
+        printf("\tKatari icinde p katari geciyor mu ?; \n\t Geciyorsa gectigi ilk pozisyon yeri\n\t Ve kac kez tekrar ettigini  \n\t\t\t gormek icin 1\'ye basiniz...\n\n");
+        printf("\tKatari icin  en uzun tekrar eden altkatari bulmak; \n\t Ve kac kez tekrar ettigini \n\t\t\tGormek icin 2\'e basiniz...\n\n");
+        printf("\tKatari icin en cok tekrar eden alt katari bulmak ;\n\t Ve kez tekrar ettigini \n\t\t\tGormek icin 3\'e basiniz..\n\n");
         printf("\tProgramdan cikmak icin 0\'a basiniz...\n\n");
         printf("Secim giriniz:\n");
         scanf("%d", &secim);
         switch (secim)
         {
+
         case 1:
+            printf("aranan katari girin..\n");
+            scanf("%s", aranan);
+            strcpy(aranan_copy, aranan);
+            address[2] = substring_check(root, aranan);
+            if (address[2] != NULL)
+            {
+                node_counting(address[2], &repaet_count);
+                printf("bulundu ..aranan katar  %s tekrar sayisi %d ..\n", aranan_copy, repaet_count);
+            }
+            else
+            {
+                printf("bulunamadi..\n");
+            }
+            repaet_count = 0;
 
             break;
         case 2:
-
+            memset(anlik_long, 0, sizeof(anlik_long));
+            longest_find(root, longest, anlik_long);
+            printf("-%s-\n", longest); //ek
+            strcpy(longest_copy, longest);
+            address[1] = substring_check(root, longest);
+            node_counting(address[1], &repaet_count);
+            printf("en uzun katar  %s tekrar sayisi %d..\n", longest_copy, repaet_count);
+            repaet_count = 0;
             break;
         case 3:
-
-            break;
-        case 4:
+            address[0] = node_counting_caller(root);
             break;
 
         case 0:
@@ -383,6 +378,4 @@ int home_screen()
             break;
         }
     }
-
-    return 0;
 }
