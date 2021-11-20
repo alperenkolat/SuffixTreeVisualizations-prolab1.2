@@ -30,6 +30,9 @@ https://acry.github.io/SDL2-C.html
 https://stephenmeier.net/2014/09/04/sdl-2-0-tutorial-03-metasprites/
 
 https://acry.github.io/SDL2-C.html
+
+https://github.com/liballeg/allegro_wiki/wiki/Allegro-Vivace
+
 ### Faydalı Şeyler
 https://visualgo.net/en/suffixtree?slide=1
 
