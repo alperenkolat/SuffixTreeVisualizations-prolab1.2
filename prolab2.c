@@ -632,7 +632,7 @@ void deneme2(branch *p_branch,double current_x,double current_y,int r,int i2,ALL
     int color = 0;
 
 
-    for(int i=0 ;i<120 && branch_size <j ;i = i + new_line,branch_size++)
+    for(int i=120 ;i>0 && branch_size <j ;i = i - new_line,branch_size++)
     {
         for(int i=0;i<10;i++)
         {
