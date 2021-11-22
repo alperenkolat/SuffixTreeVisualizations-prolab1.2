@@ -53,10 +53,11 @@ void show_tree(branch *p_branch,double current_x,double current_y,int r,int i2,A
 int main()
 {
     branch *root = malloc(sizeof(branch));
-    char array[30] = "missisipis$";
+    char array[30];
     FILE *file = fopen("string.txt","r");
-    fscanf("%s",array);
+    fscanf(file,"%s",array);
     tree_control(array);
+
     for (int i = 0; i < strlen(array); i++) // Kelime parçalanarak ekleyici fonksiyona gönderiliyor
     {
         find_branch((array + i), root);
