@@ -53,7 +53,7 @@ void show_tree(branch *p_branch,double current_x,double current_y,int r,int i2,A
 int main()
 {
     branch *root = malloc(sizeof(branch));
-    char array[30];
+    char array[100];
     FILE *file = fopen("string.txt","r");
     fscanf(file,"%s",array);
     tree_control(array);
