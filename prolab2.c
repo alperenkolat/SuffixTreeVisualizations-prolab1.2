@@ -44,16 +44,18 @@ void CameraUpdate(float *CameraPosition, float x, float y,int width,int height);
 
 void must_init(bool test, const char *description);
 
-void deneme1(branch *p_branch,double current_x,double current_y,int r, ALLEGRO_FONT* font,int distance,branch *adress[]);
+void show_root(branch *p_branch,double current_x,double current_y,int r, ALLEGRO_FONT* font,int distance,branch *adress[]);
 
-void deneme2(branch *p_branch,double current_x,double current_y,int r,int i2,ALLEGRO_FONT* font,int distance,branch *adress[]);
+void show_tree(branch *p_branch,double current_x,double current_y,int r,int i2,ALLEGRO_FONT* font,int distance,branch *adress[]);
 
 
 
 int main()
 {
     branch *root = malloc(sizeof(branch));
-    char array[30] = "attaaaggtttataccttcc$";
+    char array[30] = "missisipis$";
+    FILE *file = fopen("string.txt","r");
+    fscanf("%s",array);
     tree_control(array);
     for (int i = 0; i < strlen(array); i++) // Kelime parçalanarak ekleyici fonksiyona gönderiliyor
     {
@@ -182,7 +184,7 @@ int main()
             al_draw_textf(font, al_map_rgb(255, 255, 255), 0, 0, 0, "X: %.1f Y: %.1f", x, y);
             al_draw_filled_rectangle(x, y, x + 10, y + 10, al_map_rgb(255, 0, 0));
             
-            deneme1(root,current_x,current_y,r,font,700,adres);
+            show_root(root,current_x,current_y,r,font,700,adres);
 
             
             CameraUpdate(CamPos,x,y,32,32);
@@ -583,7 +585,7 @@ void must_init(bool test, const char *description)
     exit(1);
 }
 
-void deneme1(branch *p_branch,double current_x,double current_y,int r, ALLEGRO_FONT* font,int distance,branch *adress[])
+void show_root(branch *p_branch,double current_x,double current_y,int r, ALLEGRO_FONT* font,int distance,branch *adress[])
 {   
     double val = 3.14159265/180;
     int j=0;
@@ -616,12 +618,12 @@ void deneme1(branch *p_branch,double current_x,double current_y,int r, ALLEGRO_F
         al_draw_text(font, al_map_rgb(255, 255, 255),current_x + -1*(cos((val)*(i+30))*distance) + -1*(cos((val)*(i+30))*r) -r +1 , current_y + (sin((val)*(i+30))*distance) + (sin((val)*(i+30))*r), 0, p_branch->next[branch_size]->suffix);// Son kısımları yazmayacak
 
 
-        deneme2(p_branch->next[branch_size],current_x + -1*(cos((val)*(i+30))*distance) + -1*(cos((val)*(i+30))*r) ,current_y + (sin((val)*(i+30))*distance) + (sin((val)*(i+30))*r) ,r,i2,font,distance,adress);
+        show_tree(p_branch->next[branch_size],current_x + -1*(cos((val)*(i+30))*distance) + -1*(cos((val)*(i+30))*r) ,current_y + (sin((val)*(i+30))*distance) + (sin((val)*(i+30))*r) ,r,i2,font,distance,adress);
     }
 
 }
 
-void deneme2(branch *p_branch,double current_x,double current_y,int r,int i2,ALLEGRO_FONT* font,int distance,branch *adress[])
+void show_tree(branch *p_branch,double current_x,double current_y,int r,int i2,ALLEGRO_FONT* font,int distance,branch *adress[])
 {   
     double val = 3.14159265/180;
     int j=0;
@@ -647,7 +649,7 @@ void deneme2(branch *p_branch,double current_x,double current_y,int r,int i2,ALL
         al_draw_line(current_x + -1*(cos((val)*(i+30+i2))*r), current_y + (sin((val)*(i+30+i2))*r), current_x + -1*(cos((val)*(i+30+i2))*distance), current_y + (sin((val)*(i+30+i2))*distance) , al_map_rgb_f(1, color, 0), 1); // Çizgi çizer
         al_draw_circle(current_x + -1*(cos((val)*(i+30+i2))*distance) + -1*(cos((val)*(i+30))*r) , current_y + (sin((val)*(i+30+i2))*distance) + (sin((val)*(i+30))*r), r, al_map_rgb_f(1, color, 1), 2);
         al_draw_text(font, al_map_rgb(255, 255, 255), current_x + -1*(cos((val)*(i+30+i2))*distance) + -1*(cos((val)*(i+30))*r) -r, current_y + (sin((val)*(i+30+i2))*distance) + (sin((val)*(i+30))*r), 0, p_branch->next[branch_size]->suffix);// Son kısımları yazmayacak
-        deneme2(p_branch->next[branch_size],current_x + -1*(cos((val)*(i+30+i2))*distance) + -1*(cos((val)*(i+30))*r),current_y + (sin((val)*(i+30+i2))*distance) + (sin((val)*(i+30))*r),r,i2,font,distance,adress);
+        show_tree(p_branch->next[branch_size],current_x + -1*(cos((val)*(i+30+i2))*distance) + -1*(cos((val)*(i+30))*r),current_y + (sin((val)*(i+30+i2))*distance) + (sin((val)*(i+30))*r),r,i2,font,distance,adress);
 
     }
 }
