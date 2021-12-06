@@ -1,5 +1,15 @@
 # prolab1.2
 
+## Kullanım (Linux)
+Uygulamanın çalışabilmesi için bilgisayarınızda Allegro5 kütüphanesinin yüklü olması lazım.
+Uygulamanın bulunduğu dizinde make all komutu ile derleyebilir ./prolab2 komutu ile uygulamayı başlatabilirsiniz.
+Siyah ekran ile karşılaşıldığında aynı anda 'S' ve 'D' tuşlarına 1 saniye basarak ağacı görüntüleyebilir. Bu 2 tuş büyütme 'W' ve 'A' tuşları ile de uzaklaştırma işlemi yapılmaktadır.
+Yön tüşları ile ekranda ve ağaç üzerinde gezilebilir.
+Aktif pencere ağacın grafiğinin açıldığı pencere iken 'q' tuşuna basılırsa uygulamaya bir kesme sinyali alarak komut arayüzünde (./prolab2 komutunun verildiği yer) bir menü görüntülenir.
+Bu menüde 1-2-3 tuşları ile seçim yapılabilir. Seçim yaptıktan sonra menü ekranından çıkmak için (tercihen) 0 girdisi sağlanırsa tekrar grafik arayüzü aktif olacak ve orada gezinme işlemleri yapılabilir hale gelecektir. Menü açıkken grafik arayüzünde herhangi bir işlem yapılamaz.
+
+## Sorunla
+'q' tuşu ile menü açılması ve seçim yapılması sonrası bazen menü arayüzü sürekli 'q' tuşuna basılı olarak kalmakta ve grafik arayüzüne tekrar geçiş yapılmasına izin vermemektedir. Henüz hangi senaryolarda bu sorun başadığı tespit edilemediği için çözülememiştir.
 
 ### Tartışma Başlıkları
 https://stackoverflow.com/questions/1701728/graphics-library-in-c
