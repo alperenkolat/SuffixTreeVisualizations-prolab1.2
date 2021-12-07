@@ -42,7 +42,7 @@ Sonek ağacı oluşturulan bir s katarı içinde en çok tekrar eden altkatar ne
 ![Ekran görüntüsü 2021-12-06 14-57-11](https://user-images.githubusercontent.com/30952126/144867203-571464bc-e6aa-4f6f-86a3-0f3e87c4a90b.png)
 
 ## Sorunlar
-'q' tuşu ile menü açılması ve seçim yapılması sonrası bazen menü arayüzü sürekli 'q' tuşuna basılı olarak kalmakta ve grafik arayüzüne tekrar geçiş yapılmasına izin vermemektedir. Henüz hangi senaryolarda bu sorun başadığı tespit edilemediği için çözülememiştir.
+'q' tuşu ile menü açılması ve seçim yapılması sonrası bazen menü arayüzü sürekli 'q' tuşuna basılı olarak kalmakta ve grafik arayüzüne tekrar geçiş yapılmasına izin vermemektedir. Henüz hangi senaryolarda bu sorunun yaşandığı tespit edilemediği için çözülememiştir.
 
 ### Tartışma Başlıkları
 https://stackoverflow.com/questions/1701728/graphics-library-in-c
