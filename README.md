@@ -1,4 +1,4 @@
-# suffix tree /prolab1.2
+# suffix tree Visualizations /prolab1.2
 
 ## Kullanım 
 Uygulamanın çalışabilmesi için bilgisayarınızda Allegro5 kütüphanesinin yüklü olması gerekmektedir.
