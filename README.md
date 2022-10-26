@@ -1,5 +1,7 @@
 # suffix tree visualizations /prolab1.2
 
+# Sonek Ağacı Görselleştirme (Suffix Tree)
+
 ## Kullanım 
 Uygulamanın çalışabilmesi için bilgisayarınızda Allegro5 kütüphanesinin yüklü olması gerekmektedir.
 
